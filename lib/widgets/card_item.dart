@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myfirstflutterapp/constants/app_colour.dart';
 
-class CardItem extends StatelessWidget {
+class CardItem extends StatefulWidget {
   final String title;
   final String subtitle;
   final String cost;
@@ -13,7 +13,16 @@ class CardItem extends StatelessWidget {
     required this.subtitle,
     required this.cost,
     required this.imagepath,
+    required Null Function(dynamic isFavorite) onFavoriteTap,
+    required isFavorite,
   });
+
+  @override
+  _CardItemState createState() => _CardItemState();
+}
+
+class _CardItemState extends State<CardItem> {
+  bool isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,15 +34,15 @@ class CardItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            imagepath,
-            height: 70,
+            widget.imagepath,
+            height: 50,
             width: 70,
           ),
           SizedBox(height: 10),
           Column(
             children: [
               Text(
-                title,
+                widget.title,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -41,7 +50,7 @@ class CardItem extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
               Text(
-                subtitle,
+                widget.subtitle,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
@@ -61,7 +70,7 @@ class CardItem extends StatelessWidget {
                   children: [
                     SizedBox(width: 5),
                     Text(
-                      cost,
+                      widget.cost,
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w400,
@@ -70,16 +79,23 @@ class CardItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: bluedark,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Icon(
-                    CupertinoIcons.add,
-                    size: 10,
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isFavorite = !isFavorite;
+                    });
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: isFavorite ? Colors.red : Colors.transparent,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Icon(
+                      Icons.favorite,
+                      size: 20,
+                      color: isFavorite ? Colors.white : Colors.black,
+                    ),
                   ),
                 ),
               ],

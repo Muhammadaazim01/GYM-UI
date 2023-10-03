@@ -17,11 +17,11 @@ class CustomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
-      height: 50,
+      width: 350,
+      height: 35,
       margin: EdgeInsets.only(bottom: 50),
       decoration: BoxDecoration(
-        color: bluedark,
+        color:Greyscale3,
         borderRadius: BorderRadius.circular(28),
       ),
       child: TextField(
@@ -32,7 +32,7 @@ class CustomBar extends StatelessWidget {
             color: prefixiconcolor,
           ),
           hintText: hintText,
-          hintStyle: TextStyle(color: black60),
+          hintStyle: TextStyle(color: Colors.black),
           border: InputBorder.none,
         ),
       ),

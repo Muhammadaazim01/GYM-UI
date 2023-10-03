@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:myfirstflutterapp/constants/app_colour.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -12,7 +13,7 @@ class Categoryone extends StatefulWidget {
 }
 
 List<Map<String, String>> ShopCardData = [
- {
+  {
     "title": "Adjustable dumbells",
     "subtitle": "New",
     "imagepath": "assets/images/Adjustable-Dumbbells.png"
@@ -59,7 +60,6 @@ class _CategoryoneState extends State<Categoryone> {
 
   void onShoppingBagIconTap() {}
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -67,7 +67,7 @@ class _CategoryoneState extends State<Categoryone> {
         appBar: AppBar(
           toolbarHeight: 200,
           leadingWidth: 70,
-          backgroundColor: bluelight,
+          backgroundColor: black100,
           title: Padding(
             padding: const EdgeInsets.only(bottom: 1.0),
             child: Row(
@@ -90,7 +90,7 @@ class _CategoryoneState extends State<Categoryone> {
                       "Shop",
                       style: TextStyle(
                         fontFamily: "Manrope",
-                        fontSize: 40,
+                        fontSize: 35,
                         fontWeight: FontWeight.w300,
                         color: headingColor,
                       ),
@@ -99,7 +99,7 @@ class _CategoryoneState extends State<Categoryone> {
                       "By Category",
                       style: TextStyle(
                         fontFamily: "Manrope",
-                        fontSize: 40,
+                        fontSize: 35,
                         fontWeight: FontWeight.w800,
                         color: headingColor,
                       ),
@@ -140,6 +140,7 @@ class _CategoryoneState extends State<Categoryone> {
                 title: ShopCardData[index]["title"]!,
                 subtitle: ShopCardData[index]["subtitle"]!,
                 imagepath: ShopCardData[index]["imagepath"]!,
+                onTap: () {},
               );
             },
             itemCount: ShopCardData.length,

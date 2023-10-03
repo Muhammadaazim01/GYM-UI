@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstflutterapp/screen/hometwo.dart';
+
 
 import '../../constants/app_colour.dart';
-import '../../widgets/custom_button.dart';
+
 
 class HomeView extends StatefulWidget {
   HomeView({super.key});
@@ -20,7 +22,6 @@ class _HomeViewState extends State<HomeView> {
   List<Widget> pages = [
     YourPageWidget("Page 1 Content"),
     YourPageWidget("screen two"),
-    
   ];
 
   @override
@@ -52,8 +53,7 @@ class YourPageWidget extends StatelessWidget {
         height: 812,
         width: 375,
         decoration: BoxDecoration(
-          
-          color: bluelight,
+          color: black100,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,22 +89,32 @@ class YourPageWidget extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               children: [
                 Image.asset(
-                  "assets/images/1868038-200 (1).jpg",
+                  "assets/images/Image Icon.png",
                   height: 100,
                   width: 100,
                 ),
               ],
             ),
-            TextButton.icon(
-              style:buttonPrimary,
-              onPressed: () {},
-              label: const Text(
-                "Get Started",
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Homeone(), // Use the correct widget name
+                  ),
+                );
+              },
+              child: Text(
+                "GET STARTED",
                 style: TextStyle(
-                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              icon: Icon(Icons.arrow_forward),
+              style: ElevatedButton.styleFrom(
+                primary: black1, // Background color
+                onPrimary: black100, // Text color
+                padding: EdgeInsets.all(16), // Button padding
+              ),
             ),
           ],
         ),

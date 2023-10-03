@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:myfirstflutterapp/screen/home/home_view.dart';
+
+
+import 'package:myfirstflutterapp/screen/hometwo.dart';
 import 'package:myfirstflutterapp/screen/widgets/cart_module.dart';
 import 'package:myfirstflutterapp/screen/widgets/cart_page.dart';
-import 'package:myfirstflutterapp/screen/widgets/category2.dart';
+
+
+import 'package:myfirstflutterapp/widgets/navybar.dart';
+
+
+
 import 'package:scoped_model/scoped_model.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +25,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Shopping Cart',
-        home: Categorytwo(),
+        home: HomeView(),
         
         routes: {'/cart': (context) => CartPage()},
       ),

@@ -1,5 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:myfirstflutterapp/constants/app_colour.dart';
+import 'package:myfirstflutterapp/screen/widgets/More.dart';
+import 'package:myfirstflutterapp/screen/widgets/category2.dart';
+import 'package:myfirstflutterapp/screen/widgets/category_one.dart';
+import 'package:myfirstflutterapp/screen/widgets/favurite.dart';
 
 import '../widgets/Custom_search bar.dart';
 import '../widgets/card_item.dart';
@@ -12,9 +17,10 @@ class Homeone extends StatefulWidget {
 }
 
 List<String> cardimages = [
-  "assets/images/Banner Card.png",
-  "assets/images/Banner Card (1).png",
-  "assets/images/Banner Card (2).png",
+  "assets/images/fitnessbanner.png",
+  "assets/images/fitnessbanner2.png",
+  "assets/images/fitnessbanner2.png",
+  "assets/images/fitnessbanner2.png",
 ];
 List<Map<String, String>> cardItemsData = [
   {
@@ -87,6 +93,36 @@ List<Map<String, String>> teaItemsData = [
 
 
 class _HomeoneState extends State<Homeone> {
+  void _onShopifyoutlinedIconPressed(){}
+  int _currentIndex = 0;
+  final List<Widget> _pages = [Categoryone(), Categorytwo(), favurite(), More()];
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+    if (index == 1) {
+      // Navigate to the category screen
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Categoryone()));
+    }
+    if (index == 2) {
+      // Navigate to the category screen
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => Categorytwo()));
+    }
+     
+    if (index == 3) {
+      // Navigate to the category screen
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => favurite()));
+    }
+    if (index == 4) {
+      // Navigate to the category screen
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => More()));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -94,11 +130,11 @@ class _HomeoneState extends State<Homeone> {
         appBar: AppBar(
           toolbarHeight: 100,
           leadingWidth: 70,
-          backgroundColor: bluelight,
+          backgroundColor: black100,
           title: Padding(
             padding: const EdgeInsets.only(bottom: 10.0),
             child: Text(
-              "Hey, Hilal",
+              "Hi,Aazim",
               style: TextStyle(
                 fontFamily: "Manrope",
                 fontSize: 22,
@@ -111,9 +147,11 @@ class _HomeoneState extends State<Homeone> {
           actions: [
             Padding(
               padding: const EdgeInsets.only(bottom: 20.0),
-              child: Icon(Icons.shopping_bag_outlined),
-            ),
-          ],
+              child: IconButton(
+                icon: Icon(Icons.shopify_outlined),
+                onPressed: _onShopifyoutlinedIconPressed,
+              ),
+            ),],
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(100.0),
             child: Column(
@@ -122,7 +160,7 @@ class _HomeoneState extends State<Homeone> {
                   child: CustomBar(
                     hintText: "Search Products or store",
                     prefixIcon: Icons.search,
-                    prefixiconcolor:greyscale1,
+                    prefixiconcolor:Colors.black,
                   ),
                 ),
                 Padding(
@@ -139,7 +177,7 @@ class _HomeoneState extends State<Homeone> {
                               fontFamily: "Manrope",
                               fontSize: 11,
                               fontWeight: FontWeight.w800,
-                              color: greyscale1,
+                              color: Colors.white,
                             ),
                           ),
                           Row(
@@ -150,7 +188,7 @@ class _HomeoneState extends State<Homeone> {
                                   fontFamily: "Manrope",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  color: greyscale1,
+                                  color: Colors.white,
                                 ),
                               ),
                               Icon(Icons.arrow_drop_down),
@@ -167,7 +205,7 @@ class _HomeoneState extends State<Homeone> {
                               fontFamily: "Manrope",
                               fontSize: 11,
                               fontWeight: FontWeight.w800,
-                              color: greyscale1,
+                              color: Colors.white,
                             ),
                           ),
                           Row(
@@ -178,7 +216,7 @@ class _HomeoneState extends State<Homeone> {
                                   fontFamily: "Manrope",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  color: greyscale1,
+                                  color: Colors.white,
                                 ),
                               ),
                               Icon(Icons.arrow_drop_down),
@@ -240,7 +278,7 @@ class _HomeoneState extends State<Homeone> {
                         title: cardItemsData[index]["title"]!,
                         subtitle: cardItemsData[index]["subtitle"]!,
                         cost: cardItemsData[index]["cost"]!,
-                        imagepath: cardItemsData[index]["imagepath"]!,
+                        imagepath: cardItemsData[index]["imagepath"]!, isFavorite: favurite, onFavoriteTap: (isFavorite) {  },
                       ),
                     ],
                   ),
@@ -272,7 +310,7 @@ class _HomeoneState extends State<Homeone> {
                         title: teaItemsData[index]["title"]!,
                         subtitle: teaItemsData[index]["subtitle"]!,
                         cost: teaItemsData[index]["cost"]!,
-                        imagepath: teaItemsData[index]["imagepath"]!,
+                        imagepath: teaItemsData[index]["imagepath"]!, isFavorite: favurite, onFavoriteTap: (isFavorite) {  },
                       ),
                     ],
                   ),
@@ -281,33 +319,34 @@ class _HomeoneState extends State<Homeone> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(
-            Icons.home_sharp,
-            color: yellowlight,
-          ),
-          backgroundColor: Colors.black,
-          tooltip: "Home",
-          elevation: 10,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.category_outlined),
-              label: "Categories",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_outline),
-              label: "Favourite",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.more_vert_outlined),
-              label: "More",
-            ),
-          ],
-        ),
+       bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: bluelight,
+            unselectedItemColor: bluedark,
+            onTap: _onTabTapped,
+            currentIndex: _currentIndex,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.category),
+                label: "Category",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket_outlined),
+                label: "Shop",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_border),
+                label: "Favourite",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.more_vert_outlined),
+                label: "More",
+              ),
+            ],
+          )
       ),
     );
   }

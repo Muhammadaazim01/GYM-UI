@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myfirstflutterapp/screen/widgets/category2.dart';
+
 
 import 'package:scoped_model/scoped_model.dart';
 

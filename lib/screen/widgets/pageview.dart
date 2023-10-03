@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myfirstflutterapp/screen/home/home_view.dart';
 import 'package:myfirstflutterapp/screen/hometwo.dart';
@@ -10,21 +11,22 @@ import 'category_one.dart';
 
 class MyPageView extends StatelessWidget {
   final PageController _controller = PageController();
-  MyPageView({Key? key}) : super(key: key); 
+  MyPageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        controller: _controller,
-        children: [
+    var children2 = [
           HomeView(),
           Homeone(),
           Categoryone(),
           Categorytwo(),
           favurite(),
-          more(), 
-        ],
+          More(),
+        ];
+    return Scaffold(
+      body: PageView(
+        controller: _controller,
+        children: children2,
       ),
     );
   }

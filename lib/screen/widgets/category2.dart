@@ -64,7 +64,7 @@ class _CategorytwoState extends State<Categorytwo> {
         appBar: AppBar(
           toolbarHeight: 200,
           leadingWidth: 70,
-          backgroundColor: bluelight,
+          backgroundColor: black100,
           title: Padding(
             padding: const EdgeInsets.only(bottom: 1.0),
             child: Row(
@@ -74,7 +74,7 @@ class _CategorytwoState extends State<Categorytwo> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Hey, Hilal",
+                      "Hi,Aazim",
                       style: TextStyle(
                         fontFamily: "Manrope",
                         fontSize: 22,
@@ -87,7 +87,7 @@ class _CategorytwoState extends State<Categorytwo> {
                       "Shop",
                       style: TextStyle(
                         fontFamily: "Manrope",
-                        fontSize: 40,
+                        fontSize: 35,
                         fontWeight: FontWeight.w300,
                         color: headingColor,
                       ),
@@ -96,7 +96,7 @@ class _CategorytwoState extends State<Categorytwo> {
                       "By Category",
                       style: TextStyle(
                         fontFamily: "Manrope",
-                        fontSize: 40,
+                        fontSize: 35,
                         fontWeight: FontWeight.w800,
                         color: headingColor,
                       ),
@@ -122,7 +122,7 @@ class _CategorytwoState extends State<Categorytwo> {
               padding: const EdgeInsets.only(bottom: 120),
               child: InkWell(
                 onTap: onShoppingBagIconTap,
-                child: Icon(Icons.shopping_bag_outlined),
+                child: Icon(Icons.shopify_outlined),
               ),
             ),
           ],

@@ -12,6 +12,7 @@ class ShopCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.imagepath,
+    required Null Function() onTap,
   });
 
   @override
@@ -25,8 +26,8 @@ class ShopCard extends StatelessWidget {
         children: [
           Image.asset(
             imagepath,
-            height: 70,
-            width: 70,
+            height: 100,
+            width: 150,
           ),
           SizedBox(height: 10),
           Column(
@@ -39,27 +40,22 @@ class ShopCard extends StatelessWidget {
                 ),
                 textAlign: TextAlign.right,
               ),
-    
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: greyscale1,
-                    ),
-                    textAlign: TextAlign.right,
-                  ),
-                
-                
-              
-               
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
+                ),
+                textAlign: TextAlign.right,
+              ),
             ],
           ),
         ],
       ),
       decoration: BoxDecoration(
-        color: black1,
-        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             color: black20,
